@@ -19,5 +19,11 @@ class HelloAPITest {
         mockMvc.perform(get("/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello, World!"));
-    }   
+    }
+
+    @Test
+    void sayHello_InvalidEndpoint_ReturnsNotFound() throws Exception {
+        mockMvc.perform(get("/invalid"))
+                .andExpect(status().isNotFound());
+    }
 }
